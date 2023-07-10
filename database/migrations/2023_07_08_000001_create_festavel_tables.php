@@ -90,6 +90,8 @@ return new class extends Migration
             $table->foreign('venue_id')->references('id')->on('venues');
             $table->string('name');
             $table->string('headliners');
+            $table->string('website_url');
+            $table->string('image_url');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -100,7 +102,7 @@ return new class extends Migration
             $table->foreign('event_id')->references('id')->on('events');
             $table->bigInteger('stage_id');
             $table->foreign('stage_id')->references('id')->on('stages');
-            $table->string('stage_headliners');
+            $table->string('headliners');
             $table->date('date');
             $table->datetime('start_time');
             $table->datetime('end_time');
@@ -109,23 +111,23 @@ return new class extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('bands', function (Blueprint $table) {
+        Schema::create('artists', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
             $table->string('hometown');
             $table->string('genre');
             $table->string('description');
             $table->json('members');
-            $table->string('image');
+            $table->string('image_url');
             $table->string('website_url');
             $table->timestamps();
             $table->softDeletes();
         });
 
-        Schema::create('bands_schedules', function (Blueprint $table) {
+        Schema::create('artists_schedules', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
-            $table->bigInteger('band_id');
-            $table->foreign('band_id')->references('id')->on('bands');
+            $table->bigInteger('artist_id');
+            $table->foreign('artist_id')->references('id')->on('artists');
             $table->bigInteger('schedule_id');
             $table->foreign('schedule_id')->references('id')->on('schedules');
             $table->timestamps();
@@ -143,7 +145,7 @@ return new class extends Migration
         Schema::dropIfExists('events_venues');
         Schema::dropIfExists('stages');
         Schema::dropIfExists('schedules');
-        Schema::dropIfExists('bands');
-        Schema::dropIfExists('bands_schedules');
+        Schema::dropIfExists('artists');
+        Schema::dropIfExists('artists_schedules');
     }
 };
