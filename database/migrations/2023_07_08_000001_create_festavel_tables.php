@@ -8,19 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        //TODO add default values
-
         Schema::create('vendors', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
-            $table->string('type')->nullable();
-            $table->string('power_needs')->nullable();
-            $table->string('hometown')->nullable();
-            $table->string('description_short')->nullable();
-            $table->string('description_long')->nullable();
-            $table->string('address')->nullable();
-            $table->string('image_url')->nullable();
-            $table->string('website_url')->nullable();
+            $table->string('type')->nullable()->default(null);
+            $table->string('power_needs')->nullable()->default(null);
+            $table->string('hometown')->nullable()->default(null);
+            $table->string('description_short')->nullable()->default(null);
+            $table->string('description_long')->nullable()->default(null);
+            $table->string('address')->nullable()->default(null);
+            $table->string('image_url')->nullable()->default(null);
+            $table->string('website_url')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,12 +26,12 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
-            $table->string('promoter')->nullable();
-            $table->string('headliners')->nullable();
-            $table->string('second_headliners')->nullable();
-            $table->string('third_headliners')->nullable();
-            $table->string('image_url')->nullable();
-            $table->string('website_url')->nullable();
+            $table->string('promoter')->nullable()->default(null);
+            $table->string('headliners')->nullable()->default(null);
+            $table->string('second_headliners')->nullable()->default(null);
+            $table->string('third_headliners')->nullable()->default(null);
+            $table->string('image_url')->nullable()->default(null);
+            $table->string('website_url')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -51,12 +49,12 @@ return new class extends Migration
         Schema::create('venues', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
-            $table->string('address1')->nullable();
-            $table->string('address2')->nullable();
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('image_url')->nullable();
-            $table->string('website_url')->nullable();
+            $table->string('address1')->nullable()->default(null);
+            $table->string('address2')->nullable()->default(null);
+            $table->string('city')->nullable()->default(null);
+            $table->string('state')->nullable()->default(null);
+            $table->string('image_url')->nullable()->default(null);
+            $table->string('website_url')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -83,12 +81,12 @@ return new class extends Migration
 
         Schema::create('stages', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
-            $table->bigInteger('venue_id')->nullable();
+            $table->bigInteger('venue_id')->nullable()->default(null);
             $table->foreign('venue_id')->references('id')->on('venues');
-            $table->string('name')->nullable();
-            $table->string('headliners')->nullable();
-            $table->string('image_url')->nullable();
-            $table->string('website_url')->nullable();
+            $table->string('name')->nullable()->default(null);
+            $table->string('headliners')->nullable()->default(null);
+            $table->string('image_url')->nullable()->default(null);
+            $table->string('website_url')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -99,12 +97,12 @@ return new class extends Migration
             $table->foreign('event_id')->references('id')->on('events');
             $table->bigInteger('stage_id');
             $table->foreign('stage_id')->references('id')->on('stages');
-            $table->string('headliners')->nullable();
-            $table->date('date')->nullable();
-            $table->datetime('start_time')->nullable();
-            $table->datetime('end_time')->nullable();
-            $table->json('schedule')->nullable();
-            $table->string('image_url')->nullable();
+            $table->string('headliners')->nullable()->default(null);
+            $table->date('date')->nullable()->default(null);
+            $table->datetime('start_time')->nullable()->default(null);
+            $table->datetime('end_time')->nullable()->default(null);
+            $table->json('schedule')->nullable()->default(null);
+            $table->string('image_url')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -112,12 +110,12 @@ return new class extends Migration
         Schema::create('artists', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
-            $table->string('hometown')->nullable();
-            $table->string('genre')->nullable();
-            $table->string('description')->nullable();
-            $table->json('members')->nullable();
-            $table->string('image_url')->nullable();
-            $table->string('website_url')->nullable();
+            $table->string('hometown')->nullable()->default(null);
+            $table->string('genre')->nullable()->default(null);
+            $table->string('description')->nullable()->default(null);
+            $table->json('members')->nullable()->default(null);
+            $table->string('image_url')->nullable()->default(null);
+            $table->string('website_url')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
