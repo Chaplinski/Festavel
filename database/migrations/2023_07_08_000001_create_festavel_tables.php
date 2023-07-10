@@ -10,6 +10,7 @@ return new class extends Migration
     {
         //TODO add nullable columns
         //TODO add default values
+        //TODO add trait for image URL and website URL
 
         Schema::create('vendors', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
@@ -34,6 +35,8 @@ return new class extends Migration
             $table->string('headliners');
             $table->string('second_headliners');
             $table->string('third_headliners');
+            $table->string('image_url');
+            $table->string('website_url');
             $table->timestamps();
             $table->softDeletes();
         });
