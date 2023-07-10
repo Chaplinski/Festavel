@@ -31,7 +31,6 @@ return new class extends Migration
             $table->bigInteger('id')->primary();
             $table->string('name');
             $table->string('promoter');
-            $table->string('website_url');
             $table->string('headliners');
             $table->string('second_headliners');
             $table->string('third_headliners');
@@ -58,8 +57,8 @@ return new class extends Migration
             $table->string('address2');
             $table->string('city');
             $table->string('state');
-            $table->string('website_url');
             $table->string('image_url');
+            $table->string('website_url');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -90,8 +89,8 @@ return new class extends Migration
             $table->foreign('venue_id')->references('id')->on('venues');
             $table->string('name');
             $table->string('headliners');
-            $table->string('website_url');
             $table->string('image_url');
+            $table->string('website_url');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -107,6 +106,7 @@ return new class extends Migration
             $table->datetime('start_time');
             $table->datetime('end_time');
             $table->json('schedule');
+            $table->string('image_url');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -137,15 +137,15 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('vendors');
-        Schema::dropIfExists('events');
         Schema::dropIfExists('vendors_events');
-        Schema::dropIfExists('venues');
+        Schema::dropIfExists('artists_schedules');
         Schema::dropIfExists('vendors_venues');
         Schema::dropIfExists('events_venues');
-        Schema::dropIfExists('stages');
+        Schema::dropIfExists('vendors');
         Schema::dropIfExists('schedules');
+        Schema::dropIfExists('stages');
+        Schema::dropIfExists('venues');
+        Schema::dropIfExists('events');
         Schema::dropIfExists('artists');
-        Schema::dropIfExists('artists_schedules');
     }
 };
