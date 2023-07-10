@@ -15,14 +15,14 @@ return new class extends Migration
         Schema::create('vendors', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
-            $table->string('type');
-            $table->string('power_needs');
-            $table->string('hometown');
-            $table->string('description_short');
-            $table->string('description_long');
-            $table->string('address');
-            $table->string('image_url');
-            $table->string('website_url');
+            $table->string('type')->nullable();
+            $table->string('power_needs')->nullable();
+            $table->string('hometown')->nullable();
+            $table->string('description_short')->nullable();
+            $table->string('description_long')->nullable();
+            $table->string('address')->nullable();
+            $table->string('image_url')->nullable();
+            $table->string('website_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,12 +30,12 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
-            $table->string('promoter');
-            $table->string('headliners');
-            $table->string('second_headliners');
-            $table->string('third_headliners');
-            $table->string('image_url');
-            $table->string('website_url');
+            $table->string('promoter')->nullable();
+            $table->string('headliners')->nullable();
+            $table->string('second_headliners')->nullable();
+            $table->string('third_headliners')->nullable();
+            $table->string('image_url')->nullable();
+            $table->string('website_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -53,12 +53,12 @@ return new class extends Migration
         Schema::create('venues', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
-            $table->string('address1');
-            $table->string('address2');
-            $table->string('city');
-            $table->string('state');
-            $table->string('image_url');
-            $table->string('website_url');
+            $table->string('address1')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('image_url')->nullable();
+            $table->string('website_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -85,12 +85,12 @@ return new class extends Migration
 
         Schema::create('stages', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
-            $table->bigInteger('venue_id');
+            $table->bigInteger('venue_id')->nullable();
             $table->foreign('venue_id')->references('id')->on('venues');
-            $table->string('name');
-            $table->string('headliners');
-            $table->string('image_url');
-            $table->string('website_url');
+            $table->string('name')->nullable();
+            $table->string('headliners')->nullable();
+            $table->string('image_url')->nullable();
+            $table->string('website_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -101,12 +101,12 @@ return new class extends Migration
             $table->foreign('event_id')->references('id')->on('events');
             $table->bigInteger('stage_id');
             $table->foreign('stage_id')->references('id')->on('stages');
-            $table->string('headliners');
-            $table->date('date');
-            $table->datetime('start_time');
-            $table->datetime('end_time');
-            $table->json('schedule');
-            $table->string('image_url');
+            $table->string('headliners')->nullable();
+            $table->date('date')->nullable();
+            $table->datetime('start_time')->nullable();
+            $table->datetime('end_time')->nullable();
+            $table->json('schedule')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -114,12 +114,12 @@ return new class extends Migration
         Schema::create('artists', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
-            $table->string('hometown');
-            $table->string('genre');
-            $table->string('description');
-            $table->json('members');
-            $table->string('image_url');
-            $table->string('website_url');
+            $table->string('hometown')->nullable();
+            $table->string('genre')->nullable();
+            $table->string('description')->nullable();
+            $table->json('members')->nullable();
+            $table->string('image_url')->nullable();
+            $table->string('website_url')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
