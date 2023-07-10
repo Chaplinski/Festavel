@@ -8,11 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
+        //TODO add nullable columns
+        //TODO add default values
+
         Schema::create('vendors', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->string('name');
-            $table->tinyInteger('sells_food');
-            $table->string('power_needed');
+            $table->string('type');
+            $table->string('power_needs');
             $table->string('hometown');
             $table->string('description_short');
             $table->string('description_long');
