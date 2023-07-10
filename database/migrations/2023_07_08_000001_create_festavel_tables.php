@@ -55,9 +55,11 @@ return new class extends Migration
             $table->bigInteger('id')->primary();
             $table->string('name');
             $table->string('address1');
+            $table->string('address2');
             $table->string('city');
             $table->string('state');
             $table->string('website_url');
+            $table->string('image_url');
             $table->timestamps();
             $table->softDeletes();
         });
