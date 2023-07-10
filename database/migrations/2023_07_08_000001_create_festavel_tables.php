@@ -8,9 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        //TODO add nullable columns
         //TODO add default values
-        //TODO add trait for image URL and website URL
 
         Schema::create('vendors', function (Blueprint $table) {
             $table->bigInteger('id')->primary();

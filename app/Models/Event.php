@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
 
 /**
@@ -24,4 +25,19 @@ class Event extends Model
     use HasFactory;
 
     protected $table = 'events';
+
+    public function venues(): HasMany
+    {
+        return $this->hasMany(Venue::class);
+    }
+
+    public function vendors(): HasMany
+    {
+        return $this->hasMany(Vendor::class);
+    }
+
+    public function schedule(): HasMany
+    {
+        return $this->hasMany(Schedule::class);
+    }
 }
